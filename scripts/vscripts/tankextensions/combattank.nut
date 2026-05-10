@@ -115,7 +115,7 @@ TankExt.NewTankType("combattank*", {
 
 				if("Model" in WeaponTable)
 				{
-					hWeapon = SpawnEntityFromTableSafe("prop_dynamic", { model = WeaponTable.Model, angles = "0 90 0", defaultanim = ("DefaultAnim" in WeaponTable) ? WeaponTable.DefaultAnim : "" })
+					hWeapon = SpawnEntityFromTableSafe("prop_dynamic", { model = WeaponTable.Model, angles = "0 90 0", modelscale = self.GetModelScale(), defaultanim = ("DefaultAnim" in WeaponTable) ? WeaponTable.DefaultAnim : "" })
 					hWeapon.SetSkin(bBlueTeam ? 1 : 0)
 					TankExt.SetParentArray([hWeapon], self, i == 1 ? "weapon_r" : "weapon_l")
 				}
@@ -123,6 +123,7 @@ TankExt.NewTankType("combattank*", {
 				{
 					hWeapon = WeaponTable.SpawnModel()
 					hWeapon.SetSkin(bBlueTeam ? 1 : 0)
+					hWeapon.SetModelScale(self.GetModelScale(), 0.0)
 					TankExt.SetParentArray([hWeapon], self, i == 1 ? "weapon_r" : "weapon_l")
 				}
 
