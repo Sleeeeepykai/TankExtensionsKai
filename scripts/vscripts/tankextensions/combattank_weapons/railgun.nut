@@ -104,7 +104,7 @@ TankExt.CombatTankWeapons["railgun"] <- {
 			}
 
 			local vecTracer = hTank_scope.LaserTrace.endpos
-			local vecBarrel = self.GetAttachmentOrigin(self.LookupAttachment("barrel"))
+			local vecBarrel = self.GetOrigin() + (self.GetAttachmentOrigin(self.LookupAttachment("barrel")) - self.GetOrigin()) * hTank.GetModelScale()
 			local bBlueTeam = iTeamNum == TF_TEAM_BLUE
 
 			local hParticle = SpawnEntityFromTableSafe("info_particle_system", {

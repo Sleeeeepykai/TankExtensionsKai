@@ -185,7 +185,7 @@ TankExt.CombatTankWeapons["fireball"] <- {
 			{
 				local flDelta = flTime + COMBATTANK_FIREBALL_RECHARGE_TIME
 				bUseUpper ? flUpperRechargeTime = flDelta : flLowerRechargeTime = flDelta
-				ShootAtTarget(self.GetAttachmentOrigin(bUseUpper ? iAttachmentUpper : iAttachmentLower))
+				ShootAtTarget(self.GetOrigin() + (self.GetAttachmentOrigin(bUseUpper ? iAttachmentUpper : iAttachmentLower) - self.GetOrigin()) * hTank.GetModelScale())
 				bUseUpper = bUseUpper ? false : true
 				hTank_scope.AddToSoundQueue({
 					sound_name  = COMBATTANK_FIREBALL_SND_FIRE
