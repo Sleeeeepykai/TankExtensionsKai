@@ -67,10 +67,10 @@ TankExt.CombatTankWeapons["rocketpod"] <- {
 				iSlots.remove(iRNG)
 
 				// SetPropInt(hWeapon, "m_iParentAttachment", iBarrel) // this is slower
-				hWeapon.SetAbsOrigin(self.GetAttachmentOrigin(iBarrel))
+				hWeapon.SetAbsOrigin(self.GetOrigin() + (self.GetAttachmentOrigin(iBarrel) - self.GetOrigin()) * hTank.GetModelScale())
 				hWeapon.AcceptInput("FireOnce", null, null, null)
 
-				DispatchParticleEffect("rocketbackblast", self.GetAttachmentOrigin(iBarrel + 9), self.GetAttachmentAngles(iBarrel + 9).Forward())
+				DispatchParticleEffect("rocketbackblast", self.GetOrigin() + (self.GetAttachmentOrigin(iBarrel + 9) - self.GetOrigin()) * hTank.GetModelScale(), self.GetAttachmentAngles(iBarrel + 9).Forward())
 				hTank_scope.AddToSoundQueue({
 					sound_name  = COMBATTANK_ROCKETPOD_SND_FIRE
 					sound_level = 90
