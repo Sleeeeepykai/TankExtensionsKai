@@ -40,7 +40,7 @@ TankExt.NewTankType("targetank", {
 			model      = TARGETANK_MODEL_TARGE
 			origin     = "90 28 84"
 			angles     = "-29.3 194.9 76.8"
-			modelscale = 2.5 * GetModelScale()
+			modelscale = 2.5 * self.GetModelScale()
 			skin       = 1
 		})
 		local hTrail = SpawnEntityFromTableSafe("env_spritetrail", {
